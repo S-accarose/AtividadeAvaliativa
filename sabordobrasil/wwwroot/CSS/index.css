@@ -3,3 +3,59 @@
     background-color: rgb(217, 112, 20);
     height: 100px;
 }
+
+.hud_pub
+{
+    width: 100%;
+    height: 40px;
+    border: groove;
+    border-width: 1px;
+    border-top: unset;
+    border-color: rgb(0, 0, 0);
+}
+
+.pub
+{
+    width: 100%;
+    height: 501px;
+    background-color: antiquewhite;
+    border: groove;
+    border-width: 1px;
+    border-top: unset;
+    border-color: rgb(0, 0, 0);
+}
+
+.titulo
+{
+    width: 100%;
+    height: 30px;
+    background-color: aliceblue;
+    text-align: left;
+}
+
+.fundofoto
+{
+    width: 100%;
+    height: 370px;
+    background-color: rgb(255, 255, 255);
+}
+
+.foto
+{
+    border-radius: 10px;
+}
+
+.descricao
+{
+    text-align: left;
+    width: 100%;
+    height: 30px;
+    background-color: aliceblue;
+}
+
+.like
+{
+    width: 100%;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+}
