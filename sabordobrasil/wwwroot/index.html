@@ -29,14 +29,61 @@
         <div class="container text-center" style="justify-self: center;">
             <div class="row">
               <div class="col">
-                Usuário logado
+                        <div class="usea">
+                            <div class="foto" style="padding: 10 10;">
+                                <img class="nonsigned" src="./imgs/nonsigneduser.png" alt="">
+                            </div>
+                            <div class="nome"></div>
+                            <div class="hr" style="margin: 10 10;"></div>
+                            <div class="hstack" style="justify-self: center;">
+                                <div class="p-2">
+                                    <div class="vstack">
+                                        <div class="p-2">
+                                            <div class="qtdlikes"><h5>0</h5></div>
+                                        </div>
+                                        <div class="p-2 text-center">
+                                            <p>Likes</p>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="vr"></div>
+                                
+                                <div class="p-2">
+                                    <div class="vstack">
+                                        <div class="p-2">
+                                            <div class="qtddislikes"><h5>0</h5></div>
+                                        </div>
+                                        <div class="p-2 text-center">
+                                            <p>Dislikes</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="p-2">
+                            <button class="login-btn" onclick="abrirModal()">Login</button>
+                            <div class="modal-overlay" id="modalOverlay">
+                                <div class="modal">
+                                <button class="close-btn" onclick="fecharModal()">X</button>
+                                <h2>Login</h2>
+                                <input type="email" placeholder="Email">
+                                <input type="password" placeholder="Senha">
+                                <button class="login-btn">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                 
               </div>
               <div class="col-6">
                 <div class="hud_pub"><h5 style="padding: 3px;">Publicações</h5></div>
 
                 <div class="pub">
                     <div class="titulo"><h6 style="padding: 2px;padding-left: 15px;">Pizza</h6></div>
-                    <div class="fundofoto" style="padding-top: 15px;"><img class="foto" src="./imgs/pizza.png" alt="" width="95%" height="95%"></div>
+                    <div class="fundofoto" style="padding-top: 15px;"><img class="foto" src="./imgs/pizza.png" alt="Prato" width="95%" height="95%"></div>
                     <div class="descricao">
                         <div class="hstack">
                             <div class="p-2">
@@ -48,15 +95,17 @@
                         </div>
                     </div>
                     <div class="like">
-                        <div class="hstack gap-3">
-                            <div class="p-2">
-
-                            </div>
-                            <div class="p-2">
-
-                            </div>
-                            <div class="p-2 ms-auto">
-
+                        <div class="container" style="margin: 10px 10px;">
+                            <div class="hstack gap-3">
+                                <div class="p-2">
+                                    <img class="icon" src="./imgs/like.png" alt="Like">
+                                </div>
+                                <div class="p-2">
+                                    <img class="icon" src="./imgs/dislike.png" alt="Dislike">
+                                </div>
+                                <div class="p-2 ms-auto">
+                                    <img class="icon" src="./imgs/comentario.png" alt="Comentário">
+                                </div>
                             </div>
                         </div>
                     </div>

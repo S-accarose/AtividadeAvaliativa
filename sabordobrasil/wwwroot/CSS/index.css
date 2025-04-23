@@ -4,6 +4,78 @@
     height: 100px;
 }
 
+.user
+{
+    height: 350px;
+}
+
+.nonsigned
+{
+    background-color: aliceblue;
+    max-width: 130px;
+    max-height: 130px;
+    border-width: 1px;
+    border-radius: 50%;
+    border-color: rgb(0, 0, 0);
+}
+
+.hr
+{
+    justify-self: center;
+    height: 1px;
+    width: 60%;
+    background-color: black;
+}
+
+.login-btn
+{
+    padding: 10px 20px;
+    background-color: #e8a56b
+    color: black
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal-overlay
+{
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal
+ {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal input {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.close-btn
+{
+    background-color: #E8A56B
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    float: right;
+}
+
 .hud_pub
 {
     width: 100%;
@@ -18,7 +90,6 @@
 {
     width: 100%;
     height: 501px;
-    background-color: antiquewhite;
     border: groove;
     border-width: 1px;
     border-top: unset;
@@ -29,7 +100,6 @@
 {
     width: 100%;
     height: 30px;
-    background-color: aliceblue;
     text-align: left;
 }
 
@@ -37,7 +107,6 @@
 {
     width: 100%;
     height: 370px;
-    background-color: rgb(255, 255, 255);
 }
 
 .foto
@@ -50,12 +119,16 @@
     text-align: left;
     width: 100%;
     height: 30px;
-    background-color: aliceblue;
 }
 
 .like
 {
     width: 100%;
     height: 70px;
-    background-color: rgb(255, 255, 255);
+}
+
+.icon
+{
+    max-height: 50px;
+    max-width: 20px ;
 }
