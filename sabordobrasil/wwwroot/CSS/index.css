@@ -114,3 +114,14 @@
 {
     color: rgb(54, 54, 54) !important;
 }
+
+.list-group-item
+{
+    border: none !important;
+    padding: 25 0 0 0 !important;
+}
+
+.comentario_usuario
+{
+    display: none !important;
+}
