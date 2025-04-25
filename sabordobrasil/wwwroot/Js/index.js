@@ -1,4 +1,4 @@
-//Collapse do botão
+// Collapse do botão
 
 document.addEventListener("DOMContentLoaded", function () {
     const botaoComentario = document.querySelector(".comentario");
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//Adicionar novo comentário
+// Adicionar novo comentário
 
 document.addEventListener("DOMContentLoaded", function () {
     const botaoComentar = document.querySelector(".comentar");
@@ -84,3 +84,27 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     alert("Email ou senha inválidos.");
     }
 });
+
+// Validação de login e bloqueio de interações para usuários deslogados
+
+function mostrarModalLoginObrigatorio() {
+const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
+modal.show();
+}
+document.querySelectorAll(".botao-like").forEach(btn => {
+btn.addEventListener("click", function (e) {
+    if (!usuarioLogado) {
+    e.preventDefault();
+    mostrarModalLoginObrigatorio();
+    }
+});
+});
+const botaoComentar = document.querySelector(".comentar");
+if (botaoComentar) {
+botaoComentar.addEventListener("click", function (e) {
+    if (!usuarioLogado) {
+    e.preventDefault();
+    mostrarModalLoginObrigatorio();
+    }
+});
+}
