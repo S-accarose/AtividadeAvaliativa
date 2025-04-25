@@ -87,6 +87,13 @@
 .botao:hover
 {
     font-weight: bolder;
+    background-color: #9b5d27 !important;
+}
+
+.botao:active
+{
+    background-color: #6d4624 !important;
+    transform: scale(0.95);
 }
 
 .rodape
@@ -115,6 +122,37 @@
     color: rgb(54, 54, 54) !important;
 }
 
+.numcomentarios
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.caixacoment
+{
+    border-style: groove !important;
+    border-color: #e8a56b !important;
+    border-width: 1px !important;
+}
+
+.comentar
+{
+    color: white;
+    background-color: #D97014 !important;
+    border: unset !important;
+}
+
+.comentar:hover
+{
+    background-color: #9b5d27 !important;
+}
+
+.comentar:active
+{
+    background-color: #6d4624 !important;
+    transform: scale(0.95);
+}
+
 .list-group-item
 {
     border: none !important;
@@ -123,5 +161,25 @@
 
 .comentario_usuario
 {
-    display: none !important;
+    display: none;
+}
+
+.logcad
+{
+    color: #e8a56b !important;
+}
+
+.cabeca
+{
+    border-color: #e8a56b;
+    border-style: groove;
+    border-width: 3px;
+}
+
+.corpo
+{
+    border-top: none !important;
+    border-color: #e8a56b;
+    border-style: groove;
+    border-width: 3px;
 }
