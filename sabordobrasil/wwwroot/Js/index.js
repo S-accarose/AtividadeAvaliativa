@@ -1,110 +1,141 @@
-// Collapse do botão
+const SERVER_URL = "http://localhost:5000";
 
 document.addEventListener("DOMContentLoaded", function () {
     const botaoComentario = document.querySelector(".comentario");
     const secaoComentario = document.querySelector(".comentario_usuario");
 
-    botaoComentario.addEventListener("click", function () {
-    if (secaoComentario.style.display === "none" || secaoComentario.style.display === "") {
-        secaoComentario.style.display = "block";
-    } else {
-        secaoComentario.style.display = "none";
+    if (botaoComentario) {
+        botaoComentario.addEventListener("click", function () {
+            if (secaoComentario.style.display === "none" || secaoComentario.style.display === "") {
+                secaoComentario.style.display = "block";
+            } else {
+                secaoComentario.style.display = "none";
+            }
+        });
     }
-    });
+
+    carregarUsuario();
 });
 
-// Adicionar novo comentário
+// Guarda usuário no localStorage
+function salvarUsuario(usuario) {
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+    usuarioLogado = usuario;
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    const botaoComentar = document.querySelector(".comentar");
-    const textarea = document.getElementById("comentarioInput");
-    const lista = document.getElementById("listaComentarios");
-    const usuarioLogado = true;
-    const nomeUsuario = "Usuário_Logado";
-    botaoComentar.addEventListener("click", function () {
-    const texto = textarea.value.trim();
-    if (!usuarioLogado) {
-        alert("Você precisa estar logado para comentar.");
-        return;
+// Pega usuário do localStorage
+function carregarUsuario() {
+    const usuario = localStorage.getItem("usuario");
+    if (usuario) {
+        usuarioLogado = JSON.parse(usuario);
     }
-    if (texto === "") {
-        alert("Digite algo para comentar.");
-        return;
-    }
-    const novoComentario = document.createElement("li");
-    novoComentario.className = "list-group-item d-flex justify-content-between align-items-start";
-    novoComentario.innerHTML = `
-        <div class="ms-2 me-auto">
-        <div class="fw-bold">${nomeUsuario}</div>
-        ${texto}
-        </div>
-    `;
-    lista.appendChild(novoComentario);
-    textarea.value = "";
-    });
-});
+}
 
-// Sistema Login e Cadastro
-
-let usuarios = []; 
 let usuarioLogado = null;
 
-document.getElementById("cadastroForm").addEventListener("submit", function (e) {
+// CADASTRO
+document.getElementById("cadastroForm").addEventListener("submit", async function (e) {
     e.preventDefault();
-
-    const nome = document.getElementById("nomeCadastro").value.trim();
-    const email = document.getElementById("emailCadastro").value.trim();
+    const nome = document.getElementById("nomeCadastro").value;
+    const email = document.getElementById("emailCadastro").value;
     const senha = document.getElementById("senhaCadastro").value;
-    const foto = document.getElementById("fotoCadastro").files[0];
 
-    if (usuarios.find(u => u.email === email)) {
-    alert("Email já cadastrado.");
-    return;
+    const response = await fetch(`${SERVER_URL}/cadastro`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, email, senha })
+    });
+
+    const data = await response.json();
+    if (data.sucesso) {
+        alert("Cadastro realizado com sucesso!");
+        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        modal.hide();
+    } else {
+        alert(data.mensagem || "Erro ao cadastrar!");
     }
-
-    usuarios.push({ nome, email, senha, foto });
-    alert("Cadastro realizado com sucesso!");
-    document.getElementById("cadastroForm").reset();
 });
 
-document.getElementById("loginForm").addEventListener("submit", function (e) {
+// LOGIN
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
-
-    const email = document.getElementById("loginEmail").value.trim();
+    const email = document.getElementById("loginEmail").value;
     const senha = document.getElementById("loginSenha").value;
 
-    const usuario = usuarios.find(u => u.email === email && u.senha === senha);
-    if (usuario) {
-    usuarioLogado = usuario;
-    alert("Login realizado com sucesso!");
-    document.getElementById("loginForm").reset();
-    const modal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
-    modal.hide();
+    const response = await fetch(`${SERVER_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha })
+    });
+
+    const data = await response.json();
+    if (data.sucesso) {
+        salvarUsuario(data.usuario);
+        alert(`Bem-vindo(a), ${usuarioLogado.nome}!`);
+        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        modal.hide();
     } else {
-    alert("Email ou senha inválidos.");
+        alert(data.mensagem || "Email ou senha incorretos!");
     }
 });
 
-// Validação de login e bloqueio de interações para usuários deslogados
+// COMENTAR
+document.querySelector(".comentar").addEventListener("click", async function () {
+    const textoComentario = document.getElementById("comentarioInput").value.trim();
+    if (!usuarioLogado) {
+        mostrarModalLoginObrigatorio();
+        return;
+    }
+
+    if (textoComentario.length === 0) {
+        alert("O comentário não pode estar vazio!");
+        return;
+    }
+
+    const response = await fetch(`${SERVER_URL}/comentar`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            usuario_id: usuarioLogado.id,
+            comentario: textoComentario
+        })
+    });
+
+    const data = await response.json();
+    if (data.sucesso) {
+        alert("Comentário enviado!");
+        document.getElementById("comentarioInput").value = "";
+        // Atualizar a lista de comentários aqui se quiser
+    } else {
+        alert(data.mensagem || "Erro ao comentar.");
+    }
+});
+
+// DAR LIKE
+document.querySelector(".likes").addEventListener("click", async function () {
+    if (!usuarioLogado) {
+        mostrarModalLoginObrigatorio();
+        return;
+    }
+
+    const response = await fetch(`${SERVER_URL}/like`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            usuario_id: usuarioLogado.id,
+            post_id: 1 // Aqui seria o ID real da receita (mockado como 1 por enquanto)
+        })
+    });
+
+    const data = await response.json();
+    if (data.sucesso) {
+        alert("Like registrado!");
+    } else {
+        alert(data.mensagem || "Erro ao dar like.");
+    }
+});
 
 function mostrarModalLoginObrigatorio() {
-const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
-modal.show();
-}
-document.querySelectorAll(".botao-like").forEach(btn => {
-btn.addEventListener("click", function (e) {
-    if (!usuarioLogado) {
-    e.preventDefault();
-    mostrarModalLoginObrigatorio();
-    }
-});
-});
-const botaoComentar = document.querySelector(".comentar");
-if (botaoComentar) {
-botaoComentar.addEventListener("click", function (e) {
-    if (!usuarioLogado) {
-    e.preventDefault();
-    mostrarModalLoginObrigatorio();
-    }
-});
+    const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
+    modal.show();
 }
