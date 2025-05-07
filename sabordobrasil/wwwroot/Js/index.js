@@ -139,3 +139,31 @@ function mostrarModalLoginObrigatorio() {
     const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
     modal.show();
 }
+
+document.querySelector(".dislikes").addEventListener("click", async function () {
+    if (!usuarioLogado) {
+        mostrarModalLoginObrigatorio();
+        return;
+    }
+
+    const response = await fetch(`${SERVER_URL}/deslike`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            usuario_id: usuarioLogado.id,
+            post_id: 1 // Aqui seria o ID real da receita (mockado como 1 por enquanto)
+        })
+    });
+
+    const data = await response.json();
+    if (data.sucesso) {
+        alert("Dislike registrado!");
+    } else {
+        alert(data.mensagem || "Erro ao dar dislike.");
+    }
+});
+
+function mostrarModalLoginObrigatorio() {
+    const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
+    modal.show();
+}
