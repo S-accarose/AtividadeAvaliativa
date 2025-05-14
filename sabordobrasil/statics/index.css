@@ -164,6 +164,16 @@
     display: none;
 }
 
+.editarcom
+{
+    color: black !important;
+}
+
+.apagarcom
+{
+    color: black !important;
+}
+
 .logcad
 {
     color: #e8a56b !important;
@@ -182,4 +192,11 @@
     border-color: #e8a56b;
     border-style: groove;
     border-width: 3px;
+}
+
+.middle-scroll {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding-right: 15px; /* opcional, evita corte de barra */
+    scrollbar-gutter: stable;
 }
