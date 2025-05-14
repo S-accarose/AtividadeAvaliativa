@@ -6,24 +6,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (botaoComentario) {
         botaoComentario.addEventListener("click", function () {
-            if (secaoComentario.style.display === "none" || secaoComentario.style.display === "") {
-                secaoComentario.style.display = "block";
-            } else {
-                secaoComentario.style.display = "none";
-            }
+            secaoComentario.style.display = secaoComentario.style.display === "none" || secaoComentario.style.display === "" ? "block" : "none";
         });
     }
 
     carregarUsuario();
+    controlarBotoesEdicao();
+    atualizarContadorComentarios();
+    configurarBotaoEntrar();
+    atualizarPerfilUsuario();
 });
 
-// Guarda usuário no localStorage
+// Usuário logado global
+let usuarioLogado = null;
+
+// LocalStorage
 function salvarUsuario(usuario) {
     localStorage.setItem("usuario", JSON.stringify(usuario));
     usuarioLogado = usuario;
 }
 
-// Pega usuário do localStorage
 function carregarUsuario() {
     const usuario = localStorage.getItem("usuario");
     if (usuario) {
@@ -31,9 +33,7 @@ function carregarUsuario() {
     }
 }
 
-let usuarioLogado = null;
-
-// CADASTRO
+// Cadastro
 document.getElementById("cadastroForm").addEventListener("submit", async function (e) {
     e.preventDefault();
     const nome = document.getElementById("nomeCadastro").value;
@@ -56,7 +56,7 @@ document.getElementById("cadastroForm").addEventListener("submit", async functio
     }
 });
 
-// LOGIN
+// Login
 document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
     const email = document.getElementById("loginEmail").value;
@@ -74,12 +74,13 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         alert(`Bem-vindo(a), ${usuarioLogado.nome}!`);
         const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
         modal.hide();
+        location.reload();
     } else {
         alert(data.mensagem || "Email ou senha incorretos!");
     }
 });
 
-// COMENTAR
+// Comentar
 document.querySelector(".comentar").addEventListener("click", async function () {
     const textoComentario = document.getElementById("comentarioInput").value.trim();
     if (!usuarioLogado) {
@@ -95,7 +96,7 @@ document.querySelector(".comentar").addEventListener("click", async function () 
     const response = await fetch(`${SERVER_URL}/comentar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             usuario_id: usuarioLogado.id,
             comentario: textoComentario
         })
@@ -105,13 +106,38 @@ document.querySelector(".comentar").addEventListener("click", async function () 
     if (data.sucesso) {
         alert("Comentário enviado!");
         document.getElementById("comentarioInput").value = "";
-        // Atualizar a lista de comentários aqui se quiser
+
+        // Criação do novo comentário no DOM
+        const novoComentario = document.createElement("li");
+        novoComentario.classList.add("list-group-item", "d-flex", "align-items-start", "justify-content-between");
+        novoComentario.setAttribute("data-autor-id", usuarioLogado.id);
+
+        novoComentario.innerHTML = `
+            <div class="d-flex">
+                <img src="${usuarioLogado.foto || '../statics/imgs/nonsigneduser.png'}" alt="avatar" width="45" height="45" class="rounded-circle me-2">
+                <div class="ms-2">
+                    <strong>${usuarioLogado.nome}</strong><br>
+                    ${textoComentario}
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <span class="editarcom text-primary" style="cursor:pointer;">Editar</span>
+                <span class="apagarcom text-danger" style="cursor:pointer;">Apagar</span>
+            </div>
+        `;
+
+        document.getElementById("listaComentarios").appendChild(novoComentario);
+
+        novoComentario.querySelector(".editarcom").addEventListener("click", editarComentario);
+        novoComentario.querySelector(".apagarcom").addEventListener("click", apagarComentario);
+
+        atualizarContadorComentarios();
     } else {
         alert(data.mensagem || "Erro ao comentar.");
     }
 });
 
-// DAR LIKE
+// Like
 document.querySelector(".likes").addEventListener("click", async function () {
     if (!usuarioLogado) {
         mostrarModalLoginObrigatorio();
@@ -121,25 +147,17 @@ document.querySelector(".likes").addEventListener("click", async function () {
     const response = await fetch(`${SERVER_URL}/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             usuario_id: usuarioLogado.id,
-            post_id: 1 // Aqui seria o ID real da receita (mockado como 1 por enquanto)
+            post_id: 1
         })
     });
 
     const data = await response.json();
-    if (data.sucesso) {
-        alert("Like registrado!");
-    } else {
-        alert(data.mensagem || "Erro ao dar like.");
-    }
+    alert(data.sucesso ? "Like registrado!" : data.mensagem || "Erro ao dar like.");
 });
 
-function mostrarModalLoginObrigatorio() {
-    const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
-    modal.show();
-}
-
+// Dislike
 document.querySelector(".dislikes").addEventListener("click", async function () {
     if (!usuarioLogado) {
         mostrarModalLoginObrigatorio();
@@ -149,21 +167,125 @@ document.querySelector(".dislikes").addEventListener("click", async function () 
     const response = await fetch(`${SERVER_URL}/deslike`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             usuario_id: usuarioLogado.id,
-            post_id: 1 // Aqui seria o ID real da receita (mockado como 1 por enquanto)
+            post_id: 1
         })
     });
 
     const data = await response.json();
-    if (data.sucesso) {
-        alert("Dislike registrado!");
-    } else {
-        alert(data.mensagem || "Erro ao dar dislike.");
-    }
+    alert(data.sucesso ? "Dislike registrado!" : data.mensagem || "Erro ao dar dislike.");
 });
 
+// Mostrar modal login obrigatório
 function mostrarModalLoginObrigatorio() {
     const modal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
     modal.show();
+}
+
+// Edição/remoção de comentário
+function controlarBotoesEdicao() {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    if (!usuario) return;
+
+    const botoesEditar = document.querySelectorAll(".editarcom");
+    const botoesApagar = document.querySelectorAll(".apagarcom");
+
+    botoesEditar.forEach(botao => {
+        const li = botao.closest("li");
+        const autorId = parseInt(li.getAttribute("data-autor-id"));
+        if (autorId === usuario.id) {
+            botao.style.display = "inline";
+            botao.addEventListener("click", editarComentario);
+        } else {
+            botao.style.display = "none";
+        }
+    });
+
+    botoesApagar.forEach(botao => {
+        const li = botao.closest("li");
+        const autorId = parseInt(li.getAttribute("data-autor-id"));
+        if (autorId === usuario.id) {
+            botao.style.display = "inline";
+            botao.addEventListener("click", apagarComentario);
+        } else {
+            botao.style.display = "none";
+        }
+    });
+}
+
+function editarComentario(event) {
+    const comentarioItem = event.target.closest("li");
+    const comentarioTexto = comentarioItem.querySelector("div.ms-2");
+
+    const novoTexto = prompt("Edite seu comentário:", comentarioTexto.innerText.trim());
+    if (novoTexto !== null && novoTexto.trim() !== "") {
+        comentarioTexto.childNodes[2].nodeValue = " " + novoTexto;
+    }
+}
+
+function apagarComentario(event) {
+    const comentarioItem = event.target.closest("li");
+    if (confirm("Tem certeza que deseja apagar este comentário?")) {
+        comentarioItem.remove();
+        atualizarContadorComentarios();
+    }
+}
+
+// Botão Entrar vira Sair
+function configurarBotaoEntrar() {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const botaoEntrar = document.querySelector(".botao");
+
+    if (usuario) {
+        botaoEntrar.textContent = "SAIR";
+        botaoEntrar.classList.remove("btn-primary");
+        botaoEntrar.classList.add("btn-danger");
+
+        botaoEntrar.removeAttribute("data-bs-toggle");
+        botaoEntrar.removeAttribute("data-bs-target");
+
+        botaoEntrar.addEventListener("click", function () {
+            localStorage.removeItem("usuario");
+            alert("Você foi deslogado.");
+            location.reload();
+        });
+    } else {
+        botaoEntrar.textContent = "ENTRAR";
+        botaoEntrar.classList.remove("btn-danger");
+        botaoEntrar.classList.add("btn-primary");
+
+        botaoEntrar.setAttribute("data-bs-toggle", "modal");
+        botaoEntrar.setAttribute("data-bs-target", "#loginModal");
+    }
+}
+
+// Exibir nome, foto, likes e dislikes
+function atualizarPerfilUsuario() {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    if (!usuario) return;
+
+    const nomeEl = document.querySelector(".nome");
+    if (nomeEl) nomeEl.innerHTML = `<h5>${usuario.nome}</h5>`;
+
+    const fotoEl = document.querySelector(".foto img");
+    if (fotoEl) {
+        fotoEl.src = usuario.foto || "../statics/imgs/nonsigneduser.png";
+    }
+
+    const qtdLikesEl = document.querySelector(".qtdlikes h5");
+    if (qtdLikesEl) qtdLikesEl.textContent = usuario.likes ?? 0;
+
+    const qtdDislikesEl = document.querySelector(".qtddislikes h5");
+    if (qtdDislikesEl) qtdDislikesEl.textContent = usuario.dislikes ?? 0;
+}
+
+// Contador de comentários
+function atualizarContadorComentarios() {
+    const listaComentarios = document.querySelectorAll("#listaComentarios li");
+    const contadorEl = document.querySelector(".numcomentarios");
+
+    if (contadorEl) {
+        contadorEl.textContent = listaComentarios.length;
+    }
 }

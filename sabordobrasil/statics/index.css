@@ -164,14 +164,10 @@
     display: none;
 }
 
-.editarcom
+.editarcom, .apagarcom
 {
     color: black !important;
-}
-
-.apagarcom
-{
-    color: black !important;
+    cursor: pointer;
 }
 
 .logcad
@@ -194,9 +190,10 @@
     border-width: 3px;
 }
 
-.middle-scroll {
+.scroll-meio
+{
     height: calc(100vh - 100px);
     overflow-y: auto;
-    padding-right: 15px; /* opcional, evita corte de barra */
+    padding-right: 15px;
     scrollbar-gutter: stable;
 }
