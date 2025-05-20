@@ -1,8 +1,12 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from .models import insert_comment, insert_like
 
 routes_bp = Blueprint('routes', __name__)
+
+@routes_bp.route('/')
+def index():
+    return render_template('index.html')
 
 @routes_bp.route('/comentar', methods=['POST'])
 @jwt_required()
