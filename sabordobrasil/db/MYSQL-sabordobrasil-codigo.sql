@@ -15,13 +15,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+USE `mydb`;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
-  `id_usuario` INT NULL DEFAULT NULL AUTO_INCREMENT,
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
 -- Table `mydb`.`Localidade`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Localidade` (
-  `id_localidade` INT NULL DEFAULT NULL AUTO_INCREMENT,
+  `id_localidade` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_localidade`));
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Localidade` (
 -- Table `mydb`.`Prato`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Prato` (
-  `id_prato` INT NULL DEFAULT NULL AUTO_INCREMENT,
+  `id_prato` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `descricao` TEXT NULL DEFAULT NULL,
   `foto` VARCHAR(255) NULL DEFAULT NULL,
@@ -53,10 +53,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Prato` (
   PRIMARY KEY (`id_prato`),
   INDEX (`criado_por` ASC) VISIBLE,
   INDEX (`id_localidade` ASC) VISIBLE,
-  CONSTRAINT ``
     FOREIGN KEY (`criado_por`)
     REFERENCES `mydb`.`Usuario` (`id_usuario`),
-  CONSTRAINT ``
     FOREIGN KEY (`id_localidade`)
     REFERENCES `mydb`.`Localidade` (`id_localidade`));
 
@@ -65,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Prato` (
 -- Table `mydb`.`Comentario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Comentario` (
-  `id_comentario` INT NULL DEFAULT NULL AUTO_INCREMENT,
+  `id_comentario` INT NOT NULL AUTO_INCREMENT,
   `id_usuario` INT NOT NULL,
   `id_prato` INT NOT NULL,
   `texto` TEXT NOT NULL,
@@ -74,10 +72,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Comentario` (
   INDEX `idx_comentario_prato` (`id_prato` ASC) VISIBLE,
   INDEX (`id_usuario` ASC) VISIBLE,
   INDEX (`id_prato` ASC) VISIBLE,
-  CONSTRAINT ``
     FOREIGN KEY (`id_usuario`)
     REFERENCES `mydb`.`Usuario` (`id_usuario`),
-  CONSTRAINT ``
     FOREIGN KEY (`id_prato`)
     REFERENCES `mydb`.`Prato` (`id_prato`));
 
@@ -86,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Comentario` (
 -- Table `mydb`.`Reacao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Reacao` (
-  `id_reacao` INT NULL DEFAULT NULL AUTO_INCREMENT,
+  `id_reacao` INT NOT NULL AUTO_INCREMENT,
   `id_usuario` INT NOT NULL,
   `id_prato` INT NOT NULL,
   `tipo` ENUM('like', 'deslike') NOT NULL,
@@ -96,10 +92,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Reacao` (
   INDEX `idx_reacao_prato` (`id_prato` ASC) VISIBLE,
   INDEX (`id_usuario` ASC) VISIBLE,
   INDEX (`id_prato` ASC) VISIBLE,
-  CONSTRAINT ``
     FOREIGN KEY (`id_usuario`)
     REFERENCES `mydb`.`Usuario` (`id_usuario`),
-  CONSTRAINT ``
     FOREIGN KEY (`id_prato`)
     REFERENCES `mydb`.`Prato` (`id_prato`));
 

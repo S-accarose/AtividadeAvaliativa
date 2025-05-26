@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     atualizarContadorComentarios();
     configurarBotaoEntrar();
     atualizarPerfilUsuario();
+    ocultarBotaoAddPubParaNaoAdmin();
 });
 
 // Usuário logado global
@@ -39,18 +40,25 @@ document.getElementById("cadastroForm").addEventListener("submit", async functio
     const nome = document.getElementById("nomeCadastro").value;
     const email = document.getElementById("emailCadastro").value;
     const senha = document.getElementById("senhaCadastro").value;
+    const foto = document.getElementById("fotoCadastro").files[0];
+
+    const formData = new FormData();
+    formData.append("nome", nome);
+    formData.append("email", email);
+    formData.append("senha", senha);
+    if (foto) formData.append("foto", foto);
 
     const response = await fetch(`${SERVER_URL}/cadastro`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, email, senha })
+        body: formData
     });
 
     const data = await response.json();
     if (data.sucesso) {
         alert("Cadastro realizado com sucesso!");
         const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-        modal.hide();
+        if (modal) modal.hide();
+        document.getElementById("cadastroForm").reset();
     } else {
         alert(data.mensagem || "Erro ao cadastrar!");
     }
@@ -71,9 +79,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     const data = await response.json();
     if (data.sucesso) {
         salvarUsuario(data.usuario);
-        alert(`Bem-vindo(a), ${usuarioLogado.nome}!`);
+        alert(`Bem-vindo(a), ${data.usuario.nome}!`);
+        // Fecha o modal de login
         const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-        modal.hide();
+        if (modal) modal.hide();
+        // Recarrega a página para atualizar o estado do usuário
         location.reload();
     } else {
         alert(data.mensagem || "Email ou senha incorretos!");
@@ -270,7 +280,12 @@ function atualizarPerfilUsuario() {
 
     const fotoEl = document.querySelector(".foto img");
     if (fotoEl) {
-        fotoEl.src = usuario.foto || "../statics/imgs/nonsigneduser.png";
+        // Se não houver foto, usa a padrão
+        if (usuario.foto && usuario.foto !== "") {
+            fotoEl.src = `/static/${usuario.foto}`;
+        } else {
+            fotoEl.src = "/static/imgs/nonsigneduser.png";
+        }
     }
 
     const qtdLikesEl = document.querySelector(".qtdlikes h5");
@@ -287,5 +302,19 @@ function atualizarContadorComentarios() {
 
     if (contadorEl) {
         contadorEl.textContent = listaComentarios.length;
+    }
+}
+
+function ocultarBotaoAddPubParaNaoAdmin() {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const botaoAddPub = document.querySelector(".botaoaddpub");
+    if (!botaoAddPub) return;
+
+    // Supondo que o administrador tem o email "admin@sabordobrasil.com"
+    // ou uma propriedade usuario.admin === true
+    if (!usuario || (usuario.email !== "admin@sabordobrasil.com" && !usuario.admin)) {
+        botaoAddPub.style.display = "none";
+    } else {
+        botaoAddPub.style.display = "inline-block";
     }
 }

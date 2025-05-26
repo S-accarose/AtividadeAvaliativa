@@ -197,3 +197,24 @@
     padding-right: 15px;
     scrollbar-gutter: stable;
 }
+
+.botaoaddpub
+{
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+    background-color: #D97014 !important;
+    border: unset !important;
+    border-radius: 50%;
+}
+
+.botaoaddpub:hover
+{
+    font-weight: bolder;
+    background-color: #9b5d27 !important;
+}
+
+.botaoaddpub:active
+{
+    background-color: #6d4624 !important;
+    transform: scale(0.95);
+}
