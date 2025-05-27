@@ -16,6 +16,9 @@ def comentar():
     texto = data.get("comentario")
     post_id = data.get("post_id", 1)
 
+    if not texto:
+        return jsonify({"msg": "Comentário não pode ser vazio.", "sucesso": False}), 400
+
     insert_comment(usuario_id, texto, post_id)
     return jsonify({"msg": "Comentário enviado com sucesso!", "sucesso": True})
 
@@ -26,6 +29,9 @@ def like():
     usuario_id = get_jwt_identity()
     post_id = data.get("post_id")
     tipo = data.get("tipo", 1)
+
+    if not post_id:
+        return jsonify({"msg": "ID do post é obrigatório.", "sucesso": False}), 400
 
     insert_like(usuario_id, post_id, tipo)
     return jsonify({"msg": "Like registrado", "sucesso": True})
