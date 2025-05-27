@@ -7,12 +7,18 @@ def get_user_by_email(email):
     cursor.close()
     return user
 
-def create_user(nome, email, senha, admin=0):
+def create_user(nome, email, senha, adm=0, foto=None):
     cursor = mysql.connection.cursor()
-    cursor.execute(
-        "INSERT INTO usuario (nome, email, senha, admin) VALUES (%s, %s, %s, %s)",
-        (nome, email, senha, admin)
-    )
+    if foto:
+        cursor.execute(
+            "INSERT INTO usuario (nome, email, senha, adm, foto) VALUES (%s, %s, %s, %s, %s)",
+            (nome, email, senha, adm, foto)
+        )
+    else:
+        cursor.execute(
+            "INSERT INTO usuario (nome, email, senha, adm) VALUES (%s, %s, %s, %s)",
+            (nome, email, senha, adm)
+        )
     mysql.connection.commit()
     cursor.close()
 

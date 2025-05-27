@@ -12,7 +12,7 @@ def cadastro():
     nome = request.form.get("nome")
     email = request.form.get("email")
     senha = generate_password_hash(request.form.get("senha"))
-    admin = int(request.form.get("admin", 0))
+    adm = int(request.form.get("adm", 0))  # Corrigido aqui
     foto = request.files.get("foto")
     foto_path = ""
 
@@ -25,7 +25,7 @@ def cadastro():
         return jsonify({"sucesso": False, "mensagem": "Usuário já existe"}), 400
 
     try:
-        create_user(nome, email, senha, admin, foto_path)
+        create_user(nome, email, senha, adm, foto_path)  # Corrigido aqui
         return jsonify({"sucesso": True}), 201
     except Exception as e:
         return jsonify({"sucesso": False, "mensagem": str(e)}), 500
@@ -40,12 +40,12 @@ def login():
     if not user or not check_password_hash(user[3], senha):
         return jsonify({"sucesso": False, "mensagem": "Credenciais inválidas"}), 401
 
-    # user = (id, nome, email, senha, foto, admin)
+    # user = (id, nome, email, senha, foto, adm)
     usuario_dict = {
         "id": user[0],
         "nome": user[1],
         "email": user[2],
-        "foto": user[4],  # <-- já está aqui!
-        "admin": bool(user[5])
+        "foto": user[4],
+        "adm": bool(user[5])  # Certifique-se que user[5] é o campo adm
     }
     return jsonify({"sucesso": True, "usuario": usuario_dict})
