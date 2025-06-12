@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
+      "Id": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\nonsigneduser.png",
+      "PackagePath": "staticwebassets\\imgs\\nonsigneduser.png"
+    },
+    {
+      "Id": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\pizza.png",
+      "PackagePath": "staticwebassets\\imgs\\pizza.png"
+    },
+    {
+      "Id": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\js\\index.js",
+      "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.sabordobrasil.props",
+      "PackagePath": "build\\sabordobrasil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.sabordobrasil.props",
+      "PackagePath": "buildMultiTargeting\\sabordobrasil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.sabordobrasil.props",
+      "PackagePath": "buildTransitive\\sabordobrasil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.sabordobrasil.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
