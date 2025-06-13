@@ -17,17 +17,20 @@ namespace sabordobrasil.Models
         [Column("descricao")]
         public string? Descricao { get; set; }
 
-        [Required]
         [Column("foto")]
-        public string Foto { get; set; }
+        public string? Foto { get; set; }
 
         [Column("id_localidade")]
-        public int? LocalidadeId { get; set; }
-        public Localidade? Localidade { get; set; }
+        public int IdLocalidade { get; set; }
 
         [Required]
         [Column("criado_por")]
-        public int CriadoPorId { get; set; }
-        public Usuario CriadoPor { get; set; }
+        public int CriadoPor { get; set; }
+
+        [ForeignKey("IdLocalidade")]
+        public Localidade? Localidade { get; set; }
+
+        [ForeignKey("CriadoPor")]
+        public Usuario? UsuarioCriador { get; set; }
     }
 }
