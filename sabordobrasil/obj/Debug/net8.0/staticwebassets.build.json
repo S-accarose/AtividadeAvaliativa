@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IQTlfI1LfTeaQAAplKuPc4SGc4RXygk3ihPA1V3K/Q4=",
+  "Hash": "0HeEMSkkeMpucTWa2t+wOlSpLNpfPhVxcYboo7NsAQ0=",
   "Source": "sabordobrasil",
   "BasePath": "_content/sabordobrasil",
   "Mode": "Default",
@@ -55,6 +55,25 @@
       "OriginalItemSpec": "wwwroot\\imgs\\501f4eb9-edb8-45bb-9a67-ab610907c98a.jpg"
     },
     {
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\cachorro.jpg",
+      "SourceId": "sabordobrasil",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "BasePath": "_content/sabordobrasil",
+      "RelativePath": "imgs/cachorro.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imgs\\cachorro.jpg"
+    },
+    {
       "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\nonsigneduser.png",
       "SourceId": "sabordobrasil",
       "SourceType": "Discovered",
@@ -72,25 +91,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imgs\\nonsigneduser.png"
-    },
-    {
-      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\pizza.png",
-      "SourceId": "sabordobrasil",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
-      "BasePath": "_content/sabordobrasil",
-      "RelativePath": "imgs/pizza.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imgs\\pizza.png"
     },
     {
       "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\index.html",
