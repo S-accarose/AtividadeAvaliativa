@@ -13,20 +13,14 @@ CREATE TABLE IF NOT EXISTS usuario (
     adm bool default false
 );
 
-CREATE TABLE IF NOT EXISTS localidade (
-	id_localidade int not null auto_increment primary key,
-	nome_local varchar(100) not null default ''
-);
-
 CREATE TABLE IF NOT EXISTS prato (
   id_prato int not null auto_increment primary key,
   nome varchar(100) not null,
   descricao text null default null,
   foto varchar(250) not null default '',
-  id_localidade int null default null,
+  localizacao varchar(200),
   criado_por int not null,
-	foreign key (criado_por) references usuario (id_usuario),
-    foreign key (id_localidade) references localidade (id_localidade)
+	foreign key (criado_por) references usuario (id_usuario)
   );
   
 CREATE TABLE IF NOT EXISTS comentario (

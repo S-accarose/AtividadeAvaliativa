@@ -724,11 +724,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
+      "projectUniqueName": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
       "projectName": "sabordobrasil",
-      "projectPath": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
+      "projectPath": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
       "packagesPath": "C:\\Users\\lo852\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\obj\\",
+      "outputPath": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lo852\\AppData\\Roaming\\NuGet\\NuGet.Config"

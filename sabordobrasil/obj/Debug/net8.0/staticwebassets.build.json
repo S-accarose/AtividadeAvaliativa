@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "n6aFb/DIxn1FW5TXo+ak1hBeHko5FyCs/CRe5G9w3Hg=",
+  "Hash": "XcssYRq4p3DcSJvD8yq1X3yvVjh00+pA45ozzjZOQcM=",
   "Source": "sabordobrasil",
   "BasePath": "_content/sabordobrasil",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "sabordobrasil\\wwwroot",
       "Source": "sabordobrasil",
-      "ContentRoot": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
       "BasePath": "_content/sabordobrasil",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\css\\index.css",
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\css\\index.css",
       "SourceId": "sabordobrasil",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
       "BasePath": "_content/sabordobrasil",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -36,12 +36,12 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\501f4eb9-edb8-45bb-9a67-ab610907c98a.jpg",
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\6b1fa2b8-e490-4729-9f3f-b451cefbd2d8.jpg",
       "SourceId": "sabordobrasil",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
       "BasePath": "_content/sabordobrasil",
-      "RelativePath": "imgs/501f4eb9-edb8-45bb-9a67-ab610907c98a.jpg",
+      "RelativePath": "imgs/6b1fa2b8-e490-4729-9f3f-b451cefbd2d8.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,13 +52,32 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imgs\\501f4eb9-edb8-45bb-9a67-ab610907c98a.jpg"
+      "OriginalItemSpec": "wwwroot\\imgs\\6b1fa2b8-e490-4729-9f3f-b451cefbd2d8.jpg"
     },
     {
-      "Identity": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\nonsigneduser.png",
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\837439f2-0bad-417e-b9d5-18d186ecac1d.jpg",
       "SourceId": "sabordobrasil",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "BasePath": "_content/sabordobrasil",
+      "RelativePath": "imgs/837439f2-0bad-417e-b9d5-18d186ecac1d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imgs\\837439f2-0bad-417e-b9d5-18d186ecac1d.jpg"
+    },
+    {
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\nonsigneduser.png",
+      "SourceId": "sabordobrasil",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
       "BasePath": "_content/sabordobrasil",
       "RelativePath": "imgs/nonsigneduser.png",
       "AssetKind": "All",
@@ -74,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\imgs\\nonsigneduser.png"
     },
     {
-      "Identity": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\index.html",
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\index.html",
       "SourceId": "sabordobrasil",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
       "BasePath": "_content/sabordobrasil",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -93,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\js\\index.js",
+      "Identity": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\js\\index.js",
       "SourceId": "sabordobrasil",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
+      "ContentRoot": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\",
       "BasePath": "_content/sabordobrasil",
       "RelativePath": "js/index.js",
       "AssetKind": "All",

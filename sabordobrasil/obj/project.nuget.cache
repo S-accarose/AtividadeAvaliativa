@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OWVC4qwPu3s=",
+  "dgSpecHash": "fchv3VVrVVU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
+  "projectFilePath": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lo852\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.13\\microsoft.entityframeworkcore.8.0.13.nupkg.sha512",
     "C:\\Users\\lo852\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.13\\microsoft.entityframeworkcore.abstractions.8.0.13.nupkg.sha512",
