@@ -52,7 +52,7 @@ document.getElementById("cadastroForm").addEventListener("submit", async functio
         formData.append("foto", fotoInput.files[0]);
     }
 
-    const response = await fetch("/api/usuario/cadastro", {
+    const response = await fetch(`${SERVER_URL}/api/usuario/cadastro`, {
         method: "POST",
         body: formData
     });
@@ -82,7 +82,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     const email = document.getElementById("loginEmail").value;
     const senha = document.getElementById("loginSenha").value;
 
-    const response = await fetch("/api/usuario/login", {
+    const response = await fetch(`${SERVER_URL}/api/usuario/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha })
@@ -313,12 +313,12 @@ function criarCardPublicacao(pub) {
     card.innerHTML = `
         <div class="titulo titulo-publicacao" style="margin: 0 0 20px 0;"><h5>${pub.nome}</h5></div>
         <div class="container">
-            <img src="${pub.foto}" style="height: 390px; border-radius:2%;" alt="...">
+            <img src="${pub.foto}" style="width:590px; height: 390px; border-radius:2%;" alt="...">
         </div>
         <div class="card-body corpo-publicacao">
-            <div class="descricao descricao-publicacao">
+            <div class="descricao descricao-publicacao" style="margin: 0 0 30px 0;">
                 <div class="hstack">
-                    <div class="p-2"><h6>${pub.descricao}</h6></div>
+                    <div class="p-2"><h6 style="word-break: break-word; overflow-wrap: break-word; max-height: 150px; overflow: hidden;">${pub.descricao}</h6></div>
                     <div class="p-2 ms-auto"><h6>${pub.localizacao || ""}</h6></div>
                 </div>
             </div>
@@ -426,18 +426,18 @@ function criarCardPublicacao(pub) {
             if (data.removido) {
                 // Like removido
                 likeIcon.classList.remove("ativo");
-                likeCounter.textContent = parseInt(likeCounter.textContent) - 1;
+                
             } else {
                 // Like adicionado
                 likeIcon.classList.add("ativo");
 
                 if (!dislikeIcon.classList.contains("ativo")) {
-                    likeCounter.textContent = parseInt(likeCounter.textContent) + 1;
+                    
                 }
 
                 if (dislikeIcon.classList.contains("ativo")) {
                     dislikeIcon.classList.remove("ativo");
-                    dislikeCounter.textContent = parseInt(dislikeCounter.textContent) - 1;
+                    
                 }
             }
         } else {
@@ -468,18 +468,13 @@ function criarCardPublicacao(pub) {
             if (data.removido) {
                 // Dislike removido
                 dislikeIcon.classList.remove("ativo");
-                dislikeCounter.textContent = parseInt(dislikeCounter.textContent) - 1;
             } else {
                 // Dislike adicionado
                 dislikeIcon.classList.add("ativo");
 
-                if (!likeIcon.classList.contains("ativo")) {
-                    dislikeCounter.textContent = parseInt(dislikeCounter.textContent) + 1;
-                }
 
                 if (likeIcon.classList.contains("ativo")) {
                     likeIcon.classList.remove("ativo");
-                    likeCounter.textContent = parseInt(likeCounter.textContent) - 1;
                 }
             }
         } else {

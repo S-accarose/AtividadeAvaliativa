@@ -719,19 +719,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lo852\\.nuget\\packages\\": {}
+    "C:\\Users\\Alunos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
+      "projectUniqueName": "C:\\Users\\Alunos\\OneDrive\\Documentos\\git luiz\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
       "projectName": "sabordobrasil",
-      "projectPath": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
-      "packagesPath": "C:\\Users\\lo852\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\AtividadeAvaliativa\\sabordobrasil\\obj\\",
+      "projectPath": "C:\\Users\\Alunos\\OneDrive\\Documentos\\git luiz\\AtividadeAvaliativa\\sabordobrasil\\sabordobrasil.csproj",
+      "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Alunos\\OneDrive\\Documentos\\git luiz\\AtividadeAvaliativa\\sabordobrasil\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lo852\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -784,7 +784,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

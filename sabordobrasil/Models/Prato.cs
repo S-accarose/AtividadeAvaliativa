@@ -15,7 +15,7 @@ namespace sabordobrasil.Models
         public string Nome { get; set; }
 
         [Column("descricao")]
-        public string? Descricao { get; set; }
+        public string Descricao { get; set; }
 
         [Column("foto")]
         public string? Foto { get; set; }

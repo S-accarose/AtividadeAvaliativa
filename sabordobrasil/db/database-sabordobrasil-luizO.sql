@@ -42,3 +42,6 @@ CREATE TABLE IF NOT EXISTS reacao (
     foreign key (id_usuario) references usuario (id_usuario),
     foreign key (id_prato) references prato (id_prato)
 );
+
+
+insert into usuario (nome, email, senha, adm) values ('Administrador', 'admin@sabordobrasil.com', '12345678', true);
