@@ -1,0 +1,225 @@
+.navbar
+{
+    background-color: rgb(217, 112, 20);
+    height: 100px;
+}
+
+.user
+{
+    height: 350px;
+}
+
+.nonsigned
+{
+    background-color: aliceblue;
+    max-width: 130px;
+    max-height: 130px;
+    border-width: 1px;
+    border-radius: 50%;
+    border-color: rgb(0, 0, 0);
+}
+
+.hr
+{
+    justify-self: center;
+    height: 1px;
+    width: 60%;
+    background-color: black;
+}
+
+.hud_pub
+{
+    width: 100%;
+    height: 40px;
+    border: groove;
+    border-width: 1px;
+    border-top: unset;
+    border-color: rgb(0, 0, 0);
+}
+
+.card
+{
+    border-radius: unset !important;
+    border: groove !important;
+    border-width: 1px !important;
+    border-top: unset !important;
+    border-color: rgb(0, 0, 0) !important;
+}
+
+.titulo
+{
+    width: 100%;
+    height: 30px;
+    text-align: left;
+    padding-left: 17px;
+    padding-top: 9px;
+}
+
+.fundofoto
+{
+    padding: 20;
+    border-radius: 6% !important;
+}
+
+.descricao
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+    width: 100%;
+    height: 30px;
+}
+
+.icon
+{
+    max-height: 50px;
+    max-width: 20px ;
+}
+
+.botao
+{
+    min-width: 75%;
+    background-color: #D97014 !important;
+    color: white;
+    border: unset !important;
+}
+
+.botao:hover
+{
+    font-weight: bolder;
+    background-color: #9b5d27 !important;
+}
+
+.botao:active
+{
+    background-color: #6d4624 !important;
+    transform: scale(0.95);
+}
+
+.rodape
+{
+    height: 10%;
+    background-color: #D97014;
+}
+
+.icone
+{
+    color: white;
+}
+
+.botao-like,
+.botao-dislike {
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.botao-like.ativo {
+    color: green;
+}
+
+.botao-dislike.ativo {
+    color: red;
+}
+
+.comentario
+{
+    color: rgb(54, 54, 54) !important;
+}
+
+.numcomentarios
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.caixacoment
+{
+    border-style: groove !important;
+    border-color: #e8a56b !important;
+    border-width: 1px !important;
+}
+
+.comentar
+{
+    color: white;
+    background-color: #D97014 !important;
+    border: unset !important;
+}
+
+.comentar:hover
+{
+    background-color: #9b5d27 !important;
+}
+
+.comentar:active
+{
+    background-color: #6d4624 !important;
+    transform: scale(0.95);
+}
+
+.list-group-item
+{
+    border: none !important;
+    padding: 25 0 0 0 !important;
+}
+
+.comentario_usuario
+{
+    display: none;
+}
+
+.editarcom, .apagarcom
+{
+    color: black !important;
+    cursor: pointer;
+}
+
+.logcad
+{
+    color: #e8a56b !important;
+}
+
+.cabeca
+{
+    border-color: #e8a56b;
+    border-style: groove;
+    border-width: 3px;
+}
+
+.corpo
+{
+    border-top: none !important;
+    border-color: #e8a56b;
+    border-style: groove;
+    border-width: 3px;
+}
+
+.scroll-meio
+{
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-gutter: stable;
+}
+
+.botaoaddpub
+{
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+    background-color: #D97014 !important;
+    border: unset !important;
+    border-radius: 50%;
+}
+
+.botaoaddpub:hover
+{
+    font-weight: bolder;
+    background-color: #9b5d27 !important;
+}
+
+.botaoaddpub:active
+{
+    background-color: #6d4624 !important;
+    transform: scale(0.95);
+}
