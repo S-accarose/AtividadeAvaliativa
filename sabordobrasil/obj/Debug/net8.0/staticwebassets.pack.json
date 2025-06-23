@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\16f97719-6543-47df-a7aa-ab157a221bb8.png",
+      "PackagePath": "staticwebassets\\imgs\\16f97719-6543-47df-a7aa-ab157a221bb8.png"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\6b1fa2b8-e490-4729-9f3f-b451cefbd2d8.jpg",
+      "PackagePath": "staticwebassets\\imgs\\6b1fa2b8-e490-4729-9f3f-b451cefbd2d8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\837439f2-0bad-417e-b9d5-18d186ecac1d.jpg",
+      "PackagePath": "staticwebassets\\imgs\\837439f2-0bad-417e-b9d5-18d186ecac1d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\c2eb1b91-27eb-4e30-97cf-4f40f8badd07.jpg",
+      "PackagePath": "staticwebassets\\imgs\\c2eb1b91-27eb-4e30-97cf-4f40f8badd07.jpg"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\imgs\\nonsigneduser.png",
+      "PackagePath": "staticwebassets\\imgs\\nonsigneduser.png"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\lo852\\Desktop\\AtividadeAvaliativa\\sabordobrasil\\wwwroot\\js\\index.js",
+      "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.sabordobrasil.props",
+      "PackagePath": "build\\sabordobrasil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.sabordobrasil.props",
+      "PackagePath": "buildMultiTargeting\\sabordobrasil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.sabordobrasil.props",
+      "PackagePath": "buildTransitive\\sabordobrasil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.sabordobrasil.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
